@@ -1,0 +1,82 @@
+﻿<Page
+    x:Class="AccelerometerMPU9150App.BasicPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AccelerometerMPU9150App"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:AccelerometerMPU9150App.Models"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style TargetType="TextBox" x:Key="BasicTextBoxStyle">
+            <Setter Property="Width" Value="164"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="TextAlignment" Value="Right"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" >
+            <TextBox x:Name="Title" HorizontalAlignment="Center" Text="MPU-9150 Accelerometer Data" Height="64" Width="800" TextAlignment="Center" FontSize="32" Margin="0,0,0,0" BorderBrush="{x:Null}"/>
+            <TextBox x:Name="TextBlockAddress" Width="800" TextAlignment="Center" Text="Address 0x68" Style="{StaticResource BasicTextBoxStyle }"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel  Grid.Column="1" >
+                <TextBox Text="Accelerometer"  Style="{StaticResource BasicTextBoxStyle }"/>
+                <TextBox Text="Acceleration X:" Style="{StaticResource BasicTextBoxStyle }"/>
+                <TextBox Text="Acceleration Y:" Style="{StaticResource BasicTextBoxStyle }"/>
+                <TextBox Text="Acceleration Z:" Style="{StaticResource BasicTextBoxStyle }"/>
+            </StackPanel>
+            <StackPanel  Grid.Column="2" >
+                <TextBox Text="Data"  Style="{StaticResource BasicTextBoxStyle }"/>
+                <TextBox x:Name="TextBlockAccX" Text="Not Initialized" Style="{StaticResource BasicTextBoxStyle }"/>
+                <TextBox x:Name="TextBlockAccY" Text="Not Initialized" Style="{StaticResource BasicTextBoxStyle }"/>
+                <TextBox x:Name="TextBlockAccZ" Text="Not Initialized" Style="{StaticResource BasicTextBoxStyle }"/>
+            </StackPanel>
+            <StackPanel  Grid.Column="3" >
+                <TextBox Text="Angular Speed"  Style="{StaticResource BasicTextBoxStyle }"/>
+                <TextBox Text="Around X:" Style="{StaticResource BasicTextBoxStyle }"/>
+                <TextBox Text="Around Y:" Style="{StaticResource BasicTextBoxStyle }"/>
+                <TextBox Text="Around Z:" Style="{StaticResource BasicTextBoxStyle }"/>
+            </StackPanel>
+            <StackPanel  Grid.Column="4">
+                <TextBox Text="Data" Style="{StaticResource BasicTextBoxStyle }"/>
+                <TextBox x:Name="TextBlockGyroX" Text="Not Initialized" Style="{StaticResource BasicTextBoxStyle }"/>
+                <TextBox x:Name="TextBlockGyroY" Text="Not Initialized" Style="{StaticResource BasicTextBoxStyle }"/>
+                <TextBox x:Name="TextBlockGyroZ" Text="Not Initialized" Style="{StaticResource BasicTextBoxStyle }"/>
+            </StackPanel>
+        </Grid>
+        <StackPanel Grid.Row="2">
+            <TextBox x:Name="TextBlockTemp" Text="Temperature: Not Initialized" Width="500" TextAlignment="Center" Style="{StaticResource BasicTextBoxStyle }"/>
+            <TextBox x:Name="TextBlockStatus" Text="Status: Initializing" Width="800" TextAlignment="Center" Style="{StaticResource BasicTextBoxStyle }"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                <Button x:Name="MPU_ON" Content="Start MPU9150" Background="Green" FontSize="20" Width="160" Height="50" IsEnabled="True" Click="MPU_ON_Click" />
+                <Button x:Name="MPU_OFF" Content="Stop MPU9150" Background="Red" FontSize="20" Width="160" Height="50" IsEnabled="False" Click="MPU_OFF_Click" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                <Button x:Name="ButtonTimerON" Content="Get Data" Background="Green" FontSize="20" Width="160" Height="50" IsEnabled="False"  Click="ButtonTimerON_Click"/>
+                <Button x:Name="ButtonTimerOFF" Content="Stop Data" Background="Red" FontSize="20" Width="160" Height="50" IsEnabled="False"  Click="ButtonTimerOFF_Click"/>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>
